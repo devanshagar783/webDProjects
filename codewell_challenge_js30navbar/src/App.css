@@ -1,0 +1,7 @@
+.App{
+    margin: 20px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80vh;
+}

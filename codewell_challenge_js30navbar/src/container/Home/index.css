@@ -1,0 +1,33 @@
+.home_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.home_intro{
+    padding-right: 100px;
+}
+
+.welcoome_text{
+    font-size: 40px;
+    font-weight: bold;
+
+}
+
+span{
+    color: yellow;
+}
+
+.image_container img{
+    height: 250px;
+}
+
+button{
+    color: white;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: rgb(5, 61, 5);
+    padding: 0px 28px; 
+}

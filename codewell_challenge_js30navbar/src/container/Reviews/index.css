@@ -1,0 +1,14 @@
+.Reviewer_container{
+    display: flex;
+}
+
+.Reviewer_container p{
+    margin-right: 20px;
+}
+
+.Reviewers{
+    display: flex;
+    width: 90px;
+    align-items: center;
+    justify-content: space-between;
+}
