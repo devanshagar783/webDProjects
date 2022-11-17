@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin: 50px 0px;
 }
 
 .home_intro{
@@ -19,7 +21,7 @@ span{
 }
 
 .image_container img{
-    height: 250px;
+    height: 400px;
 }
 
 button{
@@ -30,4 +32,14 @@ button{
     border-radius: 4px;
     background: rgb(5, 61, 5);
     padding: 0px 28px; 
+}
+
+@media screen and (max-width:1000px) {
+    .image_container img{
+        height: 350px;
+    }
+
+    .home_container{
+    flex-wrap: wrap;
+    }
 }
