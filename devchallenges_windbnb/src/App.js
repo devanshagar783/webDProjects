@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import BnbView from "./components/BnbView";
+import Navbar from "./components/NavBar";
+import StaysView from "./components/StaysView";
+import stays from "./stays.json";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [location, setLocation] = useState("Finland");
+    const [guests, setGuests] = useState(0);
+    const [results, setResults] = useState([]);
+
+    return (
+        <div className="App">
+            <div className="App_main_container App_margin">
+                <Navbar
+                    location={location}
+                    setLocation={setLocation}
+                    guests={guests}
+                    setGuests={setGuests}
+                    setResults={setResults}
+                />
+                <div className="App_stays_container">
+                    <div className="App_stays_view_header">
+                        <h1>Stays in Finland</h1>
+                        <span>12+ stays</span>
+                    </div>
+                    <div>
+                        <BnbView />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
