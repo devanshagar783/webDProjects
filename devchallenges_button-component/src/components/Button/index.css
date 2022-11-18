@@ -1,0 +1,81 @@
+.button_component {
+    background: #e0e0e0;
+    box-shadow: 0px 2px 3px rgba(51, 51, 51, 0.2);
+    border-radius: 6px;
+    width: fit-content;
+    font-weight: 500;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.button_component:hover,
+.button_component:focus {
+    background: #aeaeae;
+}
+
+.blue{
+    background: #2962FF;
+    color: white;
+}
+
+.black{
+    background: #455A64;
+    color: white;
+}
+
+.red{
+    background: #D32F2F;
+    color: white;
+}
+
+.btn_flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.flex_rev{
+    flex-direction: row-reverse;
+}
+
+.button_component p {
+    width: max-content;
+    margin: 0;
+}
+
+.btn_outline {
+    background: none;
+    outline: none;
+    border: 1px solid #3d5afe;
+    color: #3d5afe;
+    box-shadow: none;
+}
+
+.btn_outline:hover,
+.btn_outline:focus {
+    background: rgba(41, 98, 255, 0.1);
+}
+
+.btn_no_outline{
+    background: none;
+    padding: 0;
+}
+
+.btn_noShadow{
+    box-shadow: none;
+}
+
+.btn_disabled{
+    border: none;
+    background: #e0e0e0;
+}
+
+.btn_disabled:hover{
+    background: #e0e0e0;
+    cursor: not-allowed;
+}
+
+.btn_disabled p{ 
+    color: #9E9E9E;
+}
