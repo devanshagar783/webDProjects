@@ -17,26 +17,35 @@ function Navbar(props) {
 
     return (
         <div className="navbar_maindiv">
-            {!search && <div className="navbar_container">
-                <div>
-                    <img src={Logo} alt="" />
+            {!search && (
+                <div className="navbar_container">
+                    <div>
+                        <img src={Logo} alt="" />
+                    </div>
+                    <div className="navbar_filters">
+                        <div className="search_opt" onClick={handleClick}>
+                            {location}
+                        </div>
+                        <div
+                            className="search_opt navbar_guest"
+                            onClick={handleClick}
+                        >
+                            {guests > 0 ? `${guests}` : "Add"} Guests
+                        </div>
+                        <div className="search_opt search_icon">
+                            <Search />
+                        </div>
+                    </div>
                 </div>
-                <div className="navbar_filters">
-                    <div className="search_opt" onClick={handleClick}>
-                        {location}
-                    </div>
-                    <div
-                        className="search_opt navbar_guest"
-                        onClick={handleClick}
-                    >
-                        {guests > 0 ? `${guests}` : "Add"} Guests
-                    </div>
-                    <div className="search_opt search_icon">
-                        <Search />
-                    </div>
-                </div>
-            </div>}
-            {search && <SearchView />}
+            )}
+            {search && (
+                <SearchView
+                    location={location}
+                    setLocation={setLocation}
+                    guests={guests}
+                    setGuests={setGuests}
+                />
+            )}
         </div>
     );
 }
