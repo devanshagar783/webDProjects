@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import AddDecNum from "../AddDecNum";
 import "./index.css";
 
 function InputC(props) {
-    const { label, text, setText, size } = props;
+    const { label, text, setText, type, size, addntlBtns, disabled } = props;
+    const [adults, setAdults] = useState(0);
+    const [child, setChild] = useState(0);
+
+    useEffect(() => {
+        setText(adults + child);
+    }, [adults, child]);
 
     const changeText = (e) => {
         setText(e.target.value);
@@ -18,8 +25,15 @@ function InputC(props) {
                     value={text}
                     onChange={changeText}
                     maxLength={size}
+                    disabled={disabled}
                 />
             </div>
+            {type === "guest" && (
+                <div>
+                    <AddDecNum text={"Adults"} set={setAdults} />
+                    <AddDecNum text={"Child"} set={setChild} />
+                </div>
+            )}
         </div>
     );
 }

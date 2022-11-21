@@ -11,17 +11,21 @@ function SearchView(props) {
             <div className="search_container1">
                 <div className="search_box">
                     <InputC
-                        label={"LOCATION"}
+                        label="LOCATION"
                         text={location}
                         setText={setLocation}
+                        type="location"
                     />
                 </div>
                 <div className="search_box">
                     <InputC
-                        label={"GUESTS"}
+                        label="GUESTS"
                         text={guests}
                         setText={setGuests}
+                        type="guest"
                         size={3}
+                        addntlBtns
+                        disabled
                     />
                 </div>
                 <div className="search_box search_button">
