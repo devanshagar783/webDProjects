@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import BnbView from "./components/BnbView";
 import Navbar from "./components/NavBar";
-import StaysView from "./components/StaysView";
 import stays from "./stays.json";
 
 function App() {
@@ -25,8 +24,10 @@ function App() {
                         <h1>Stays in Finland</h1>
                         <span>12+ stays</span>
                     </div>
-                    <div>
-                        <BnbView />
+                    <div className="App_bnb_container">
+                        {stays.map((item) => {
+                            return <BnbView data={item} />;
+                        })}
                     </div>
                 </div>
             </div>

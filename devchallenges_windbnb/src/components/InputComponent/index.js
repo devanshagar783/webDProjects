@@ -3,7 +3,7 @@ import AddDecNum from "../AddDecNum";
 import "./index.css";
 
 function InputC(props) {
-    const { label, text, setText, type, size, addntlBtns, disabled } = props;
+    const { label, text, setText, type, size, disabled } = props;
     const [adults, setAdults] = useState(0);
     const [child, setChild] = useState(0);
 
