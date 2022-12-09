@@ -3,13 +3,12 @@ import AddDecNum from "../AddDecNum";
 import "./index.css";
 
 function InputC(props) {
-    const { label, text, setText, type, size, disabled } = props;
-    const [adults, setAdults] = useState(0);
-    const [child, setChild] = useState(0);
+    const { label, text, setText, type, size, ad, setAd, ch, setCh, disabled } = props;
 
     useEffect(() => {
-        setText(adults + child);
-    }, [adults, child]);
+        if(type==="guest")
+            setText(ad + ch);
+    }, [ad, ch]);
 
     const changeText = (e) => {
         setText(e.target.value);
@@ -30,8 +29,8 @@ function InputC(props) {
             </div>
             {type === "guest" && (
                 <div>
-                    <AddDecNum text={"Adults"} set={setAdults} />
-                    <AddDecNum text={"Child"} set={setChild} />
+                    <AddDecNum text={"Adults"} set={setAd} value={ad} />
+                    <AddDecNum text={"Child"} set={setCh} value={ch} />
                 </div>
             )}
         </div>

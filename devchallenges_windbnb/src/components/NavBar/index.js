@@ -11,7 +11,6 @@ function Navbar(props) {
     const [search, setSearch] = useState(false);
 
     const handleClick = () => {
-        console.log("clcddcod");
         setSearch(!search);
     };
 
@@ -44,6 +43,7 @@ function Navbar(props) {
                     setLocation={setLocation}
                     guests={guests}
                     setGuests={setGuests}
+                    onClick={()=>{handleClick()}}
                 />
             )}
         </div>

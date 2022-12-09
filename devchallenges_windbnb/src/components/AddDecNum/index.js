@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./index.css";
 
-function AddDecNum({ text, set }) {
-    const [num, setNum] = useState(0);
+function AddDecNum({ text, set, value }) {
+    const [num, setNum] = useState(value);
 
     const changeNum = (val) => {
         if (val < 0) return;

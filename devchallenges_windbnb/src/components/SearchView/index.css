@@ -1,6 +1,5 @@
 .search_container {
     background: white;
-    height: 100px;
     width: 100%;
     padding: 10px;
     position: absolute;
@@ -16,6 +15,7 @@
 
 .search_box {
     flex: 1;
+    cursor: pointer;
 }
 
 .search_button {

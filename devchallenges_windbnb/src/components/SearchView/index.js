@@ -1,10 +1,22 @@
 import { Search } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InputC from "../InputComponent";
 import "./index.css";
 
 function SearchView(props) {
-    const { location, setLocation, guests, setGuests, setResullts } = props;
+    const { location, setLocation, guests, setGuests, setResullts, onClick } =
+        props;
+    const [adults, setAdults] = useState(0);
+    const [child, setChild] = useState(0);
+
+    const areEqual = (prevProps, nextProps) => {
+
+        console.log("hel;llfdaof",nextProps,prevProps)
+        if (prevProps.location === nextProps.location) {
+          return true                                    // donot re-render
+        }
+        return false                                     // will re-render
+      }
 
     return (
         <div className="search_container">
@@ -24,11 +36,14 @@ function SearchView(props) {
                         setText={setGuests}
                         type="guest"
                         size={3}
-                        addntlBtns
+                        ad={adults}
+                        setAd={setAdults}
+                        ch={child}
+                        setCh={setChild}
                         disabled
                     />
                 </div>
-                <div className="search_box search_button">
+                <div className="search_box search_button" onClick={onClick}>
                     <Search />
                     <p>Search</p>
                 </div>
@@ -37,4 +52,4 @@ function SearchView(props) {
     );
 }
 
-export default SearchView;
+export default React.memo(SearchView);

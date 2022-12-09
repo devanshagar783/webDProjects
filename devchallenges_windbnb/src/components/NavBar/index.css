@@ -1,6 +1,7 @@
 .navbar_maindiv{
     position: sticky;
     width: 100%;
+    background: white;
 }
 
 .navbar_container {
