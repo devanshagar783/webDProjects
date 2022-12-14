@@ -56,17 +56,29 @@ const Footer = () => {
                         Social Handles
                     </Heading>
                     <Button variant={'link'} colorScheme={'whiteAlpha'}>
-                        <a href="https://www.facebook.com" target={'_blank'}>
+                        <a
+                            href="https://www.facebook.com"
+                            target={'_blank'}
+                            rel="noreferrer"
+                        >
                             Facebook
                         </a>
                     </Button>
                     <Button variant={'link'} colorScheme={'whiteAlpha'}>
-                        <a href="https://www.instagram.com" target={'_blank'}>
+                        <a
+                            href="https://www.instagram.com"
+                            target={'_blank'}
+                            rel="noreferrer"
+                        >
                             Instagram
                         </a>
                     </Button>
                     <Button variant={'link'} colorScheme={'whiteAlpha'}>
-                        <a href="https://www.github.com" target={'_blank'}>
+                        <a
+                            href="https://www.github.com"
+                            target={'_blank'}
+                            rel="noreferrer"
+                        >
                             Github
                         </a>
                     </Button>
