@@ -1,0 +1,6 @@
+.Header-container{
+    height: 50px;
+    background: #334042;
+    display: flex;
+    align-items: center;
+}
