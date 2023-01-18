@@ -27,12 +27,18 @@
 
 .appdiv_input{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 8px;
     padding-bottom: 10px;
     border-bottom: 1px solid black;
     margin-bottom: 8px;
+}
+
+.appdiv_input input{
+    text-decoration: none;
+    border-radius: 16px;
+    padding: 0 10px;
 }
 
 .appdiv_input_icon{
@@ -53,4 +59,12 @@
     padding-bottom: 10px;
     display: flex;
     gap: 8px;
+}
+
+.app_check_item input{
+    cursor: pointer;
+}
+
+.app_check_item_done{
+    text-decoration: line-through;
 }

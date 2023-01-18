@@ -9,7 +9,7 @@ function App() {
     const [size,setSize] = useState(0)
 
     const onDoneClick = () => {
-        setTodoList(oldList => [...oldList, text]);
+        setTodoList(oldList => [...oldList, {text:text, isChecked: false}]);
         setText("");
     };
 
@@ -22,7 +22,7 @@ function App() {
     const checkItem = (item) => {
         const l=todoList.length
         const index = todoList.indexOf(item);
-        setTodoList(old => [todoList[index], ...todoList.slice(0, index), ...todoList.slice(index+1, l)])
+        setTodoList([{...todoList[index], isChecked: true }, ...todoList.slice(0, index), ...todoList.slice(index+1, l)])
     }
 
     const CheckList = () => {
@@ -34,8 +34,8 @@ function App() {
                 {list.map((elem, index) => {
                     return (
                         <div key={index} className="app_check_item">
-                            <input type={"checkbox"} value={elem} onChange={()=>{ checkItem(elem); console.log("elem cl",elem,index) }} />
-                            <label>{elem}</label>
+                            <input type={"checkbox"}  disabled={elem.isChecked} checked={elem.isChecked} value={elem.text} onChange={()=>{ checkItem(elem); console.log("elem cl",elem,index) }} />
+                            <label className={elem.isChecked ? "app_check_item_done" : ""}>{elem.text}</label>
                         </div>
                     );
                 })}
