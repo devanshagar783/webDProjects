@@ -55,13 +55,19 @@
     width: 100%;
 }
 
+.app_checkitem_container{
+    display: flex;
+    align-items: flex-start;
+}
+
 .app_check_item{
+    width: 100%;
     padding-bottom: 10px;
     display: flex;
     gap: 8px;
 }
 
-.app_check_item input{
+.app_check_item input, .delete_icon{
     cursor: pointer;
 }
 
