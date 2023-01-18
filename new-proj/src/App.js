@@ -6,14 +6,10 @@ import { useState } from "react";
 function App() {
     const [text, setText] = useState("");
     const [todoList, setTodoList] = useState([]);
-    let size=0;
+    const [size,setSize] = useState(0)
 
     const onDoneClick = () => {
-        console.log("onDoneCLick", text);
-        const t = todoList;
-        t.push(text);
-        // t.push()
-        setTodoList(t);
+        setTodoList(oldList => [...oldList, text]);
         setText("");
     };
 
@@ -23,16 +19,22 @@ function App() {
         setText(e.target.value);
     };
 
+    const checkItem = (item) => {
+        const l=todoList.length
+        const index = todoList.indexOf(item);
+        setTodoList(old => [todoList[index], ...todoList.slice(0, index), ...todoList.slice(index+1, l)])
+    }
+
     const CheckList = () => {
         let list = [];
-        if (todoList && size < todoList.length) {list = todoList.reverse();size=todoList.length}
-        else list = todoList;
+        if (todoList && size <= todoList.length) {list = [...todoList].reverse();setSize(todoList.length)}
+        else list = [...todoList];
         return (
             <div className="app_checklist">
                 {list.map((elem, index) => {
                     return (
                         <div key={index} className="app_check_item">
-                            <input type={"checkbox"} value={elem} />
+                            <input type={"checkbox"} value={elem} onChange={()=>{ checkItem(elem); console.log("elem cl",elem,index) }} />
                             <label>{elem}</label>
                         </div>
                     );
