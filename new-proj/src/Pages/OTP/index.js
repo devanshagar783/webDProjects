@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useState } from "react";
+import "./index.css";
+import PrivacyTip from "@mui/icons-material/PrivacyTip";
+import OtpInput from "react-otp-input";
 
 const OTP = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+    const [otp, setOtp] = useState(0);
+    const [error, setError] = useState(false);
+    
+    const onProceedClick = () => {
+        if(otp!==2222){
+            setError(true);
+        }
+    }
 
-export default OTP
+    return (
+        <div className="otp_app">
+            <div className="otp_container">
+                <PrivacyTip fontSize="large" />
+                <div className="otp_header">OPT Verification</div>
+                <OtpInput
+                    value={otp}
+                    onChange={setOtp}
+                    hasErrored={error}
+                    numInputs={4}
+                    focusStyle={'otp_focusst'}
+                    errorStyle={"otp_error"}
+                    separator={<span>--</span>}
+                />
+                <button onClick={onProceedClick}>Proceed</button>
+            </div>
+        </div>
+    );
+};
+
+export default OTP;

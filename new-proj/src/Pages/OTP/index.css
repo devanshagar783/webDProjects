@@ -1,0 +1,51 @@
+.otp_app{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(5, 68, 104);
+}
+
+.otp_container{
+    background: white;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.otp_header{
+    font-size: 28px;
+    animation-name: test;
+    animation-duration: 4s;
+    background-color: red;
+}
+
+.otp_error{
+    border: 1px solid red;
+    animation-name: otpError;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+}
+
+.otp_focusst{
+    border: 1px solid black;
+}
+
+@keyframes test {
+    from {background-color: red;}
+    to {background-color: yellow;}
+}
+
+@keyframes otpError {
+    0% {transform: rotate(0deg);}
+    20% {transform: rotate(20deg);}
+    40% {transform: rotate(-20deg);}
+    60% {transform: rotate(20deg);}
+    80% {transform: rotate(-20deg);}
+    100% {transform: rotate(0deg);}
+}
