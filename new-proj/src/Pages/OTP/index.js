@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import PrivacyTip from "@mui/icons-material/PrivacyTip";
 import OtpInput from "react-otp-input";
@@ -6,6 +6,12 @@ import OtpInput from "react-otp-input";
 const OTP = () => {
     const [otp, setOtp] = useState(0);
     const [error, setError] = useState(false);
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            setError(false);
+        }, 2500)
+    },[error])
     
     const onProceedClick = () => {
         if(otp!==2222){
@@ -27,7 +33,7 @@ const OTP = () => {
                     errorStyle={"otp_error"}
                     separator={<span>--</span>}
                 />
-                <button onClick={onProceedClick}>Proceed</button>
+                <button className="opt_submit_btn" onClick={onProceedClick}>Proceed</button>
             </div>
         </div>
     );

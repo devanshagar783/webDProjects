@@ -20,9 +20,6 @@
 
 .otp_header{
     font-size: 28px;
-    animation-name: test;
-    animation-duration: 4s;
-    background-color: red;
 }
 
 .otp_error{
@@ -36,9 +33,17 @@
     border: 1px solid black;
 }
 
-@keyframes test {
-    from {background-color: red;}
-    to {background-color: yellow;}
+.opt_submit_btn{
+    background: blue;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+}
+
+.opt_submit_btn:hover{
+    cursor: pointer;
+    background: rgb(45, 45, 207);
 }
 
 @keyframes otpError {
