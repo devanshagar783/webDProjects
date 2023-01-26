@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./index.css";
 // import { Search } from "@mui/material";
-import { Search, Menu } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 
 import Logo from "../../assets/logo.png";
 import SearchView from "../SearchView";
+import { AppContext } from "../../contexts/AppContext";
 
 function Navbar(props) {
-    const { location, setLocation, guests, setGuests, setResullts } = props;
+    const { location, guests } = useContext(AppContext);
+    // const { setResullts } = props;
     const [search, setSearch] = useState(false);
 
     const handleClick = () => {
@@ -16,7 +18,7 @@ function Navbar(props) {
 
     return (
         <div className="navbar_maindiv">
-            {!search && (
+            {/* {!search && ( */}
                 <div className="navbar_container">
                     <div>
                         <img src={Logo} alt="" />
@@ -36,13 +38,9 @@ function Navbar(props) {
                         </div>
                     </div>
                 </div>
-            )}
+            {/* )} */}
             {search && (
                 <SearchView
-                    location={location}
-                    setLocation={setLocation}
-                    guests={guests}
-                    setGuests={setGuests}
                     onClick={()=>{handleClick()}}
                 />
             )}

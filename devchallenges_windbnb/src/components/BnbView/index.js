@@ -8,7 +8,7 @@ const BnbView = ({ data }) => {
     else {
         return (
             <div className="bnb_container">
-                <img src={data?.photo} alt="image" />
+                <img src={data?.photo} alt="" />
                 <div className="bnb_info">
                     <div className="bnb_details">
                         <div className="bnb_location_type">

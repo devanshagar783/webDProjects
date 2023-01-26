@@ -1,22 +1,23 @@
 import { Search } from "@mui/icons-material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppContext } from "../../contexts/AppContext";
 import InputC from "../InputComponent";
 import "./index.css";
 
 function SearchView(props) {
-    const { location, setLocation, guests, setGuests, setResullts, onClick } =
-        props;
+    const { location, setLocation, guests, setGuests } = useContext(AppContext);
+    const { onClick } = props;
     const [adults, setAdults] = useState(0);
     const [child, setChild] = useState(0);
 
-    const areEqual = (prevProps, nextProps) => {
+    // const areEqual = (prevProps, nextProps) => {
 
-        console.log("hel;llfdaof",nextProps,prevProps)
-        if (prevProps.location === nextProps.location) {
-          return true                                    // donot re-render
-        }
-        return false                                     // will re-render
-      }
+    //     console.log("hel;llfdaof",nextProps,prevProps)
+    //     if (prevProps.location === nextProps.location) {
+    //       return true                                    // donot re-render
+    //     }
+    //     return false                                     // will re-render
+    //   }
 
     return (
         <div className="search_container">

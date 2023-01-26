@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AddDecNum from "../AddDecNum";
 import "./index.css";
 
 function InputC(props) {
+    
     const { label, text, setText, type, size, ad, setAd, ch, setCh, disabled } = props;
 
+    
     useEffect(() => {
-        if(type==="guest")
-            setText(ad + ch);
-    }, [ad, ch]);
+        const addTotalGuests = (val) => {
+            if(type==="guest")
+                setText(val);
+        }
+        addTotalGuests(ad + ch)
+    }, [ad, ch, setText, type]);
 
     const changeText = (e) => {
         setText(e.target.value);
