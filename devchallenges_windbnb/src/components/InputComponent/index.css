@@ -32,3 +32,13 @@
     border: none;
     outline: none;
 }
+
+.input_data_list{
+    text-decoration: none;
+    list-style: none;
+}
+
+.input_list_item{
+    margin-bottom: 15px;
+    cursor: pointer;
+}

@@ -3,9 +3,10 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import InputC from "../InputComponent";
 import "./index.css";
+// import stays from "../../stays.json";
 
 function SearchView(props) {
-    const { location, setLocation, guests, setGuests } = useContext(AppContext);
+    const { location, setLocation, guests, setGuests, locationData } = useContext(AppContext);
     const { onClick } = props;
     const [adults, setAdults] = useState(0);
     const [child, setChild] = useState(0);
@@ -19,6 +20,7 @@ function SearchView(props) {
     //     return false                                     // will re-render
     //   }
 
+
     return (
         <div className="search_container">
             <div className="search_container1">
@@ -28,6 +30,8 @@ function SearchView(props) {
                         text={location}
                         setText={setLocation}
                         type="location"
+                        listData={locationData}
+                        disabled
                     />
                 </div>
                 <div className="search_box">

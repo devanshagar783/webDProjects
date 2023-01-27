@@ -3,16 +3,26 @@ import AddDecNum from "../AddDecNum";
 import "./index.css";
 
 function InputC(props) {
-    
-    const { label, text, setText, type, size, ad, setAd, ch, setCh, disabled } = props;
+    const {
+        label,
+        text,
+        setText,
+        type,
+        listData,
+        size,
+        ad,
+        setAd,
+        ch,
+        setCh,
+        disabled,
+    } = props;
 
-    
+    console.log("list", listData);
     useEffect(() => {
         const addTotalGuests = (val) => {
-            if(type==="guest")
-                setText(val);
-        }
-        addTotalGuests(ad + ch)
+            if (type === "guest") setText(val);
+        };
+        addTotalGuests(ad + ch);
     }, [ad, ch, setText, type]);
 
     const changeText = (e) => {
@@ -37,6 +47,13 @@ function InputC(props) {
                     <AddDecNum text={"Adults"} set={setAd} value={ad} />
                     <AddDecNum text={"Child"} set={setCh} value={ch} />
                 </div>
+            )}
+            {listData && (
+                <ul className="input_data_list">
+                    {listData.map((item) => {
+                        return <li className="input_list_item" onClick={()=>{setText(item)}}>{item}</li>;
+                    })}
+                </ul>
             )}
         </div>
     );
