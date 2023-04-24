@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Artistic from "./Pages/artistic";
 import OTP from "./Pages/OTP";
+// import Proj3 from "./Pages/ContextApi";
 import TodoApp from "./Pages/TodoApp";
+import ContextApi from "./Pages/ContextApi";
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
             <Routes>
                 <Route path={"/todo"} element={<TodoApp />} />
                 <Route path={"/otp"} element={<OTP />} />
-                <Route path={'/artistic'} element={<Artistic />} />
+                <Route path={'/context'} element={<ContextApi />} />
             </Routes>
         </BrowserRouter>
     )
