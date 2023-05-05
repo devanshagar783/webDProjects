@@ -20,7 +20,10 @@ const Swiper1 = () => {
             nextEl: ".swiper-arrow-rights",
             prevEl: ".swiper-arrow-lefts",
           }}
-          pagination={{ clickable: true }}
+          // dynamic bullets affect the bullets display - dynamicBullets:true
+          //  type: 'progressbar' adds a progessbar on top
+          //  type: 'fraction' adds a fraction instead of bullets
+          pagination={{ clickable: true, dynamicBullets:true }}
           scrollbar={{ draggable: true }}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
