@@ -5,7 +5,6 @@ import OTP from "./Pages/OTP";
 import TodoApp from "./Pages/TodoApp";
 import ContextApi from "./Pages/ContextApi";
 import SwiperJS from "./Pages/Swiper";
-import Swiper4 from "./Pages/Swiper/Swiper4";
 
 function App() {
 

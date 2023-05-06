@@ -1,27 +1,31 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/effect-cube";
-// import "swiper/css/effect-coverflow";
+import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "./index.scss";
-import { EffectCube, Pagination } from "swiper";
+import { EffectCoverflow, Pagination } from "swiper";
 
-const Swiper4 = () => {
+
+//effect = flip and cards - self explainatory
+const Swiper5 = () => {
   return (
-    <div className='swiper4'>
+    <div className='swiper5'>
       <Swiper
-        effect={"cube"}
+        effect={"coverflow"}
         grabCursor={true}
-        cubeEffect={{
-          shadow: true,
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
           slideShadows: true,
-          shadowOffset: 20,
-          shadowScale: 0.94,
         }}
         pagination={true}
-        modules={[EffectCube, Pagination]}
-        className="mySwiper4"
+        modules={[EffectCoverflow, Pagination]}
+        className="mySwiper5"
       >
         <SwiperSlide>
           <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt=''/>
@@ -55,4 +59,4 @@ const Swiper4 = () => {
   )
 }
 
-export default Swiper4
+export default Swiper5
