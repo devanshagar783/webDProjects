@@ -4,6 +4,7 @@ import Swiper2 from "./Swiper2";
 import Swiper3 from "./Swiper3";
 import Swiper4 from "./Swiper4";
 import Swiper5 from "./Swiper5";
+import Swiper6 from "./Swiper6";
 
 const SwiperJS = () => {
   return (
@@ -19,6 +20,10 @@ const SwiperJS = () => {
       <div>
         Swiper 5
         <Swiper5 />
+      </div>
+      <div>
+        Swiper 6
+        <Swiper6 />
       </div>
       <div>
         Swiper 4

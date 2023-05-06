@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "./index.scss";
-import { EffectCoverflow, Pagination } from "swiper";
+import { EffectCoverflow, Navigation, Pagination } from "swiper";
 
 
 //effect = flip and cards - self explainatory
@@ -16,6 +17,8 @@ const Swiper5 = () => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
+        rewind={true}
+        navigation
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -24,7 +27,7 @@ const Swiper5 = () => {
           slideShadows: true,
         }}
         pagination={true}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Pagination, Navigation]}
         className="mySwiper5"
       >
         <SwiperSlide>
