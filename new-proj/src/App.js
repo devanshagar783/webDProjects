@@ -5,16 +5,20 @@ import OTP from "./Pages/OTP";
 import TodoApp from "./Pages/TodoApp";
 import ContextApi from "./Pages/ContextApi";
 import SwiperJS from "./Pages/Swiper";
+import Stopwatch from "./Pages/Stopwatch";
+import Parallax from "./Pages/Parallax";
 
 function App() {
 
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={"/todo"} element={<TodoApp />} />
-                <Route path={"/otp"} element={<OTP />} />
-                <Route path={'/context'} element={<ContextApi />} />
-                <Route path={"/swiper"} element={<SwiperJS />} />
+                <Route path="/todo" element={<TodoApp />} />
+                <Route path="/otp" element={<OTP />} />
+                <Route path='/context' element={<ContextApi />} />
+                <Route path="/swiper" element={<SwiperJS />} />
+                <Route path="stopwatch" element={<Stopwatch />} />
+                <Route path="/parallax" element={<Parallax />} />
             </Routes>
         </BrowserRouter>
     )
