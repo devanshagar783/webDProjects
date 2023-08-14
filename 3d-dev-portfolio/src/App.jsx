@@ -7,7 +7,7 @@ import Tech from "./components/Tech"
 import Works from "./components/Works"
 import Feedbacks from "./components/Feedbacks"
 import Contact from "./components/Contact"
-import Stars from "./components/canvas/Stars"
+import { StarsCanvas } from "./components/canvas"
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          <Stars />
+          <StarsCanvas />
         </div>
       </div>
     </BrowserRouter>

@@ -15,9 +15,45 @@ const Contact = () => {
     });
     const [loading, setLoading] = useState(false);
 
-    const handleChange = (e) => {};
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
+    };
 
-    const handleSubmit = (e) => {};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        emailjs
+            .send(
+                "service_594g57i",
+                "template_wasw3og",
+                {
+                    from_name: form.name,
+                    to_name: "Devansh",
+                    from_email: form.email,
+                    to_email: "devanshagar783@gmail.com",
+                    message: form.message,
+                },
+                "XpOshVyHj7WB1vvxo"
+            )
+            .then(
+                (res) => {
+                    setLoading(false);
+                    alert("Thank you. I will get back to you");
+                    setForm({
+                        name: "",
+                        email: "",
+                        message: "",
+                    });
+                },
+                (error) => {
+                    setLoading(false);
+                    console.log("erroe occured", error);
+                    alert("Something went wrong");
+                }
+            );
+    };
 
     return (
         <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
@@ -40,7 +76,7 @@ const Contact = () => {
                             type="text"
                             name="name"
                             value={form.name}
-                            handleChange={handleChange}
+                            onChange={handleChange}
                             placeholder="What's your name"
                             className=" bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                         />
@@ -53,7 +89,7 @@ const Contact = () => {
                             type="email"
                             name="email"
                             value={form.email}
-                            handleChange={handleChange}
+                            onChange={handleChange}
                             placeholder="What's your email"
                             className=" bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                         />
@@ -66,7 +102,7 @@ const Contact = () => {
                             rows={7}
                             name="message"
                             value={form.message}
-                            handleChange={handleChange}
+                            onChange={handleChange}
                             placeholder="What do you want to say"
                             className=" bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                         />
