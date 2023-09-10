@@ -49,7 +49,7 @@ export default function Layout({ children, home }) {
                                 height={108}
                                 width={108}
                                 alt=""
-                                objectFit="cover"
+                                style={{objectFit:"cover"}}
                             />
                         </Link>
                         <h2 className={utilStyles.headingLg}>
