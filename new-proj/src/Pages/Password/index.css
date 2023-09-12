@@ -1,0 +1,26 @@
+.pass-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #26546f;
+}
+
+.pass-box-container{
+    background: #977730;
+    width: 400px;
+    height: 400px;
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+.list-item{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

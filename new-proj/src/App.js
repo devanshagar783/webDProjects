@@ -7,6 +7,7 @@ import ContextApi from "./Pages/ContextApi";
 import SwiperJS from "./Pages/Swiper";
 import Stopwatch from "./Pages/Stopwatch";
 import Parallax from "./Pages/Parallax";
+import Password from "./Pages/Password";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/swiper" element={<SwiperJS />} />
                 <Route path="stopwatch" element={<Stopwatch />} />
                 <Route path="/parallax" element={<Parallax />} />
+                <Route path="/password" element={<Password />} />
             </Routes>
         </BrowserRouter>
     )
