@@ -5,7 +5,7 @@ import { getSortedPostsData } from "../lib/posts";
 import Link from "next/link";
 import Date from "../components/date";
 
-//for static site generation
+//for static site generation with data
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
     console.log("devansh 12");
