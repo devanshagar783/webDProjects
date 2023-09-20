@@ -2,10 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+    const { data: session } = useSession();
+    console.log(session);
     return (
         <>
             <Head>
@@ -21,6 +25,34 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
+                {!session && (
+                    <button>
+                        <Link href="/api/auth/signin">
+                            <div
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    signIn();
+                                }}
+                            >
+                                Sign In
+                            </div>
+                        </Link>
+                    </button>
+                )}
+                {session && (
+                    <button>
+                        <Link href="/api/auth/signout">
+                            <div
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    signOut();
+                                }}
+                            >
+                                Sign out
+                            </div>
+                        </Link>
+                    </button>
+                )}
                 <div className={styles.description}>
                     <p>
                         Get started by editing&nbsp;
