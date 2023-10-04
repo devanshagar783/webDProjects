@@ -19,11 +19,11 @@ const Navbar = () => {
                 />
                 <div
                     className={`absolute sm:relative ${
-                        isOpen ? "" : "hidden sm:flex"
+                        isOpen ? "top-[60px]" : "hidden sm:flex"
                     } bg-red-50 flex flex-col sm:flex-row items-center p-3 border-solid border-black sm:border-none sm:gap-10 border-2 z-1 right-3`}
                 >
-                    <div>Cart</div>
-                    <div>Login</div>
+                    <div className=" cursor-pointer hover:opacity-[0.3]">Cart</div>
+                    <div className=" cursor-pointer hover:opacity-[0.3]">Login</div>
                 </div>
             </div>
         </div>
