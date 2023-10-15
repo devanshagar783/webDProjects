@@ -12,6 +12,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/" element={<Temp />} />
+                    {/* <Route path="/product/:id" element={<Product />} /> */}
                 </Routes>
             </BrowserRouter>
         </AppContextProvider>
