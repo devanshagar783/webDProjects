@@ -3,12 +3,29 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import dayjs from "dayjs";
 import "dayjs/locale/en-in";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Tabs from "./Tabs";
 
 const TransactionModal = ({ closeModal }) => {
+    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
 
-    const [date, setDate] = useState((new Date()).toISOString().split('T')[0])
+    const tabs = [
+        {
+            text: "Expense",
+            icon: "north_east",
+            iconColor: "red",
+        },
+        {
+            text: "Income",
+            icon: "south_west",
+            iconColor: "green",
+        },
+        {
+            text: "Investment",
+            icon: "trending_up",
+            iconColor: "blue",
+        },
+    ];
 
     return (
         <div className=" fixed left-0 right-0 bottom-0 top-0 bg-[#BDBDBD]/70">
@@ -17,7 +34,10 @@ const TransactionModal = ({ closeModal }) => {
                 {/* amount container */}
                 <div className=" my-5 flex text-3xl overflow-hidden justify-center gap-2">
                     <p>₹</p>
-                    <input placeholder="00.00" className="w-[150px] bg-transparent" />
+                    <input
+                        placeholder="00.00"
+                        className="w-[150px] bg-transparent"
+                    />
                 </div>
                 {/* Date picker */}
                 <div>
@@ -26,12 +46,16 @@ const TransactionModal = ({ closeModal }) => {
                         adapterLocale={"en-in"}
                     >
                         <DemoContainer components={["DatePicker"]} className="">
-                            <DatePicker label="Date" value={dayjs(date)} onChange={setDate} />
+                            <DatePicker
+                                label="Date"
+                                value={dayjs(date)}
+                                onChange={(e) => setDate(e)}
+                            />
                         </DemoContainer>
                     </LocalizationProvider>
                 </div>
-                <div className=" my-2">
-                <Tabs />
+                <div className=" my-2"> 
+                    <Tabs data={tabs} />
                 </div>
                 <button onClick={closeModal}>Done</button>
             </div>
