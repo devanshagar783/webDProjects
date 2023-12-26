@@ -1,8 +1,7 @@
 import MaterialIconsReact, { colorPalette } from "material-icons-react";
 import React from "react";
 
-const Text = ({ icon, text, orientation, iconColor }) => {
-    console.log("dev, ", iconColor);
+const TextComponent = ({ icon, text, orientation, iconColor }) => {
     return (
         <div
             className={`flex ${
@@ -11,12 +10,12 @@ const Text = ({ icon, text, orientation, iconColor }) => {
         >
             {/* <img src={icon} alt="" /> */}
             <MaterialIconsReact
-                icon={icon}
-                color={colorPalette?.[iconColor]?._700}
+                icon={icon || "arrow_up"}
+                color={colorPalette?.[iconColor]?._700 || "#FFFFFF"}
             />
             <p>{text}</p>
         </div>
     );
 };
 
-export default Text;
+export default TextComponent;

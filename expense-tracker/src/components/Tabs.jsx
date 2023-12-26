@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Text from "./Text";
+import TextComponent from "./TextComponent";
 
 const Tabs = ({ data }) => {
     const [selected, setSelected] = useState(0);
@@ -29,7 +29,7 @@ const Tabs = ({ data }) => {
 
 const Tab = ({ tabVal }) => (
     <div className="py-[6px] px-4">
-        <Text
+        <TextComponent
             text={tabVal.text}
             icon={tabVal.icon}
             iconColor={tabVal.iconColor}
