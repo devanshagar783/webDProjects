@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import TextComponent from "./TextComponent";
 
-const Tabs = ({ data }) => {
-    const [selected, setSelected] = useState(0);
-
+const Tabs = ({ data, selected, setSelected }) => {
     return (
         <div className="flex w-full rounded-md bg-gray-500 h-10 justify-center items-center px-[2px]">
             {data.map((tab, index) => {

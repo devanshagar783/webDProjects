@@ -5,9 +5,13 @@ import dayjs from "dayjs";
 import "dayjs/locale/en-in";
 import React, { useState } from "react";
 import Tabs from "./Tabs";
+import InputC from "./Input";
 
-const TransactionModal = ({ closeModal }) => {
+const TransactionModal = ({ onClose }) => {
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+    const [description, setDescription] = useState("");
+    const [amount, setAmount] = useState("");
+    const [selected, setSelected] = useState(0);
 
     const tabs = [
         {
@@ -27,6 +31,15 @@ const TransactionModal = ({ closeModal }) => {
         },
     ];
 
+    const onModalClose = () => {
+        onClose({
+            amount,
+            date,
+            description,
+            type: tabs[selected].text,
+        });
+    };
+
     return (
         <div className=" fixed left-0 right-0 bottom-0 top-0 bg-[#BDBDBD]/70">
             <div className="fixed flex flex-col w-max top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 border-black border-2 rounded-md px-5 py-2 border-solid">
@@ -37,6 +50,8 @@ const TransactionModal = ({ closeModal }) => {
                     <input
                         placeholder="00.00"
                         className="w-[150px] bg-transparent"
+                        value={amount}
+                        onChange={setAmount}
                     />
                 </div>
                 {/* Date picker */}
@@ -54,10 +69,30 @@ const TransactionModal = ({ closeModal }) => {
                         </DemoContainer>
                     </LocalizationProvider>
                 </div>
-                <div className=" my-2"> 
-                    <Tabs data={tabs} />
+                {/* Transactino Type */}
+                <div className="my-2">
+                    <Tabs
+                        data={tabs}
+                        selected={selected}
+                        setSelected={setSelected}
+                    />
                 </div>
-                <button onClick={closeModal}>Done</button>
+                {/* Description */}
+                <InputC
+                    icon="north_east"
+                    value={description}
+                    bgColor="bg-gray-500"
+                    className="placeholder:"
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Description of Transaction"
+                    title="Description"
+                />
+                <button
+                    className="w-[200px] self-center bg-black py-3 mt-5 rounded-full"
+                    onClick={onModalClose}
+                >
+                    Add Transaction
+                </button>
             </div>
         </div>
     );
