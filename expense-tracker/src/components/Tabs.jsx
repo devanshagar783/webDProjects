@@ -31,6 +31,7 @@ const Tab = ({ tabVal }) => (
             text={tabVal.text}
             icon={tabVal.icon}
             iconColor={tabVal.iconColor}
+            iconType="material"
         />
     </div>
 );

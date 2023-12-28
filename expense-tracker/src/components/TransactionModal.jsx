@@ -9,22 +9,24 @@ import InputC from "./Input";
 import Dropdown from "./Dropdown";
 import { tabItems } from "../constants/TransactionTypes";
 import MaterialIconsReact from "material-icons-react";
+import { expenseCategories } from "../constants/DropdownItems";
 
 const TransactionModal = ({ onClose }) => {
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
     const [description, setDescription] = useState("");
     const [amount, setAmount] = useState("");
     const [selected, setSelected] = useState(0);
+    const [categories, setCategories] = useState([])
 
     const onModalClose = () => {
-        if (amount && date && description && type)
+        if (amount && date && description)
             onClose({
                 amount,
                 date,
                 description,
                 type: tabItems[selected].text,
+                categories,
             });
-        // else alert("no daata ad")
         else onClose()
     };
 
@@ -80,12 +82,16 @@ const TransactionModal = ({ onClose }) => {
                     placeholder="Description of Transaction"
                     title="Description"
                 />
+                {/* Categories */}
                 <div className="mt-2 cursor-pointer">
                     <Dropdown
                         icon={"expand_more"}
                         title="Categories"
                         bgColor="bg-gray-500"
                         className="cursor-pointer"
+                        data={expenseCategories}
+                        onItemSelection={setCategories}
+                        selected={categories}
                     />
                 </div>
                 <button

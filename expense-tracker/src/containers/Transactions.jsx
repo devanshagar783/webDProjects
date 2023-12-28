@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TransactionModal from "../components/TransactionModal";
+import { expenseCategories } from "../constants/DropdownItems";
 
 const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
@@ -30,8 +31,9 @@ const Transactions = () => {
                 </button>
             </div>
             {transactionData.map((transaction, index) => (
-                <div key={index} className="flex w-full justify-between">
-                    <p>
+                <div key={index} className="flex w-full gap-2 items-center">
+                    {transaction.categories && <img src={expenseCategories[transaction.categories[0]].icon || ""} alt="" className="h-[16px] w-[16px]" />}
+                    <p className="flex-1">
                         {transaction.description}
                     </p>
                     <div className={`${transaction.type == 'Income' ? "text-green-600" : ""} flex`}>
