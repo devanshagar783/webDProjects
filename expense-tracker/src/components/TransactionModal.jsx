@@ -6,6 +6,9 @@ import "dayjs/locale/en-in";
 import React, { useState } from "react";
 import Tabs from "./Tabs";
 import InputC from "./Input";
+import Dropdown from "./Dropdown";
+import { tabItems } from "../constants/TransactionTypes";
+import MaterialIconsReact from "material-icons-react";
 
 const TransactionModal = ({ onClose }) => {
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
@@ -13,45 +16,35 @@ const TransactionModal = ({ onClose }) => {
     const [amount, setAmount] = useState("");
     const [selected, setSelected] = useState(0);
 
-    const tabs = [
-        {
-            text: "Expense",
-            icon: "north_east",
-            iconColor: "red",
-        },
-        {
-            text: "Income",
-            icon: "south_west",
-            iconColor: "green",
-        },
-        {
-            text: "Investment",
-            icon: "trending_up",
-            iconColor: "blue",
-        },
-    ];
-
     const onModalClose = () => {
-        onClose({
-            amount,
-            date,
-            description,
-            type: tabs[selected].text,
-        });
+        if (amount && date && description && type)
+            onClose({
+                amount,
+                date,
+                description,
+                type: tabItems[selected].text,
+            });
+        // else alert("no daata ad")
+        else onClose()
     };
 
     return (
         <div className=" fixed left-0 right-0 bottom-0 top-0 bg-[#BDBDBD]/70">
             <div className="fixed flex flex-col w-max top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 border-black border-2 rounded-md px-5 py-2 border-solid">
-                <p className=" text-black">New Transaction</p>
+                <div className="flex justify-between">
+                    <p className=" text-black">New Transaction</p>
+                    <div className="cursor-pointer" onClick={onModalClose}>
+                        <MaterialIconsReact icon="close" />
+                    </div>
+                </div>
                 {/* amount container */}
                 <div className=" my-5 flex text-3xl overflow-hidden justify-center gap-2">
                     <p>₹</p>
                     <input
                         placeholder="00.00"
-                        className="w-[150px] bg-transparent"
+                        className="w-[150px] bg-transparent focus:outline-none"
                         value={amount}
-                        onChange={setAmount}
+                        onChange={(e) => setAmount(e.target.value)}
                     />
                 </div>
                 {/* Date picker */}
@@ -70,9 +63,9 @@ const TransactionModal = ({ onClose }) => {
                     </LocalizationProvider>
                 </div>
                 {/* Transactino Type */}
-                <div className="my-2">
+                <div className="my-2 w-max">
                     <Tabs
-                        data={tabs}
+                        data={tabItems}
                         selected={selected}
                         setSelected={setSelected}
                     />
@@ -87,6 +80,14 @@ const TransactionModal = ({ onClose }) => {
                     placeholder="Description of Transaction"
                     title="Description"
                 />
+                <div className="mt-2 cursor-pointer">
+                    <Dropdown
+                        icon={"expand_more"}
+                        title="Categories"
+                        bgColor="bg-gray-500"
+                        className="cursor-pointer"
+                    />
+                </div>
                 <button
                     className="w-[200px] self-center bg-black py-3 mt-5 rounded-full"
                     onClick={onModalClose}
