@@ -1,6 +1,8 @@
 import MaterialIconsReact from "material-icons-react";
 import React, { useEffect, useState } from "react";
 import DropdownList from "./DropdownList";
+import TextComponent from "./TextComponent";
+import { expenseCategories } from "../constants/DropdownItems";
 
 const Dropdown = ({
     title,
@@ -17,8 +19,16 @@ const Dropdown = ({
     return (
         <div className="w-full">
             {title}
-            <div className={`rounded-md flex ${bgColor} items-center pr-3 h-9`} onClick={() => { setIsClicked(prev => !prev) }}>
-                <div className={`block w-full rounded-md border-0 py-1.5 pl-7 pr-20 ${className} ${bgColor} focus:border-none focus:outline-none`}>
+            <div className={`rounded-md flex ${bgColor} items-center pr-3 w-[400px]`} onClick={() => { setIsClicked(prev => !prev) }}>
+                <div className={`block w-full rounded-md border-0 py-1.5 pl-7 pr-20 ${className} ${bgColor} focus:border-none focus:outline-none flex flex-wrap`}>
+                    {selected.map((item, index) => {
+                        return <div
+                            key={index}
+                            className={`py-1 px-2 border-solid border-[1px] rounded-full border-green-500 mb-1 mr-1 text-sm`}
+                        >
+                            <TextComponent text={expenseCategories[item].text} icon={expenseCategories[item].icon} iconClassName={"h-[16px] w-[16px]"} />
+                        </div>
+                    })}
                 </div>
                 <MaterialIconsReact icon={icon} color={"#000000"} />
             </div>
