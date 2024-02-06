@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import TransactionModal from "../components/TransactionModal";
 import { expenseCategories } from "../constants/DropdownItems";
 import Summary from "./Summary";
@@ -6,6 +6,12 @@ import Summary from "./Summary";
 const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
     const [transactionData, setTransactionData] = useState(JSON.parse(localStorage.getItem("transactions")) || []);
+    const modalRef = useRef(null);
+
+    const outsideClickHandler = (e) => {
+        if (e.target == modalRef.current)
+            onClose()
+    }
 
     const addTransaction = () => {
         setShowModal(true);
@@ -20,10 +26,10 @@ const Transactions = () => {
     };
 
     return (
-        <div className="px-10 py-5 flex flex-col mt-3">
+        <div className="mx-auto py-5 flex flex-col mt-3 max-w-2xl">
             <Summary data={transactionData} />
-            <div className=" w-[300px] mt-8 ">
-                {showModal && <TransactionModal onClose={onClose} />}
+            <div className=" w-[300px] mt-8 " onClick={outsideClickHandler}>
+                {showModal && <TransactionModal onClose={onClose} ref={modalRef} />}
                 <div className="flex items-center w-full justify-between mb-5">
                     <h1>Transactions</h1>
                     <button

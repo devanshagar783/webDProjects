@@ -31,7 +31,7 @@ const Summary = ({ data }) => {
 
     const ExpenseView = ({ title, amount, color }) => {
         const textColor = `text-${color}-500`
-        return <div className='flex flex-col py-2'>
+        return <div className='flex flex-col p-2 border-solid border border-gray-500 min-w-[200px] max-w-[300px] rounded-md'>
             <div className={`${textColor}`}>
                 {title}
             </div>
@@ -41,9 +41,9 @@ const Summary = ({ data }) => {
 
     return (
         <div className='flex flex-col w-full'>
-            Summary
+            <span className='mb-2'>Summary</span>
             <ExpenseView title="Net Remaning" amount={expense.remaining} color="gray" />
-            <div className='flex w-full justify-between'>
+            <div className='flex w-full justify-between mt-2'>
                 <ExpenseView title="Income" amount={expense.income} color="green" />
                 <ExpenseView title="Expenses" amount={expense.expense} color="red" />
                 <ExpenseView title="Investments" amount={expense.investment} color="blue" />

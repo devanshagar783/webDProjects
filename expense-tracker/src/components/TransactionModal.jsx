@@ -3,7 +3,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import dayjs from "dayjs";
 import "dayjs/locale/en-in";
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import Tabs from "./Tabs";
 import InputC from "./Input";
 import Dropdown from "./Dropdown";
@@ -11,7 +11,8 @@ import { tabItems } from "../constants/TransactionTypes";
 import MaterialIconsReact from "material-icons-react";
 import { expenseCategories } from "../constants/DropdownItems";
 
-const TransactionModal = ({ onClose }) => {
+const TransactionModal = forwardRef(function TransactionModal(props, ref) {
+    const { onClose } = props;
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
     const [description, setDescription] = useState("");
     const [amount, setAmount] = useState("");
@@ -31,8 +32,8 @@ const TransactionModal = ({ onClose }) => {
     };
 
     return (
-        <div className=" fixed left-0 right-0 bottom-0 top-0 bg-[#BDBDBD]/70">
-            <div className="fixed flex flex-col w-max top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 border-black border-2 rounded-md px-5 py-2 border-solid">
+        <div className=" fixed left-0 right-0 bottom-0 top-0 bg-[#BDBDBD]/70" ref={ref}>
+            <div className="fixed flex flex-col w-max top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 border-black border-2 rounded-md px-5 py-2 border-solid bg-[#BDBDBD]">
                 <div className="flex justify-between">
                     <p className=" text-black">New Transaction</p>
                     <div className="cursor-pointer" onClick={onModalClose}>
@@ -103,6 +104,6 @@ const TransactionModal = ({ onClose }) => {
             </div>
         </div>
     );
-};
+})
 
 export default TransactionModal;
