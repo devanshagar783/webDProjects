@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import TransactionModal from "../components/TransactionModal";
 import { expenseCategories } from "../constants/DropdownItems";
 import Summary from "./Summary";
+import MaterialIcon, {colorPalette} from "material-icons-react";
 
 const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
@@ -39,18 +40,21 @@ const Transactions = () => {
                         Add
                     </button>
                 </div>
-                {transactionData.map((transaction, index) => (
-                    <div key={index} className="flex w-full gap-2 items-center">
-                        {transaction.categories && <img src={expenseCategories[transaction.categories[0]].icon || ""} alt="" className="h-[16px] w-[16px]" />}
-                        <p className="flex-1">
-                            {transaction.description}
-                        </p>
-                        <div className={`${transaction.type == 'Income' ? "text-green-600" : ""} flex`}>
-                            {transaction.type == 'Income' ? "+ ₹ " : "- ₹ "}
-                            <p>{transaction.amount}</p>
+                <div className="flex flex-col gap-1">
+                    {transactionData.map((transaction, index) => (
+                        <div key={index} className="flex w-full gap-2 items-center border-b ">
+                            {transaction.categories && <img src={expenseCategories[transaction.categories[0]].icon || ""} alt="" className="h-[16px] w-[16px]" />}
+                            <p className="flex-1">
+                                {transaction.description}
+                            </p>
+                            <div className={`${transaction.type == 'Income' ? "text-green-600" : ""} flex`}>
+                                {transaction.type == 'Income' ? "+ ₹ " : "- ₹ "}
+                                <p>{transaction.amount}</p>
+                            </div>
+                            <MaterialIcon icon="edit" color={colorPalette.white} />
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );
