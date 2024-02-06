@@ -11,7 +11,7 @@ const Input = ({
     bgColor,
 }) => {
     return (
-        <div className="w-full">
+        <div className="w-full text-black">
             {title}
             <div className={`rounded-md flex ${bgColor} items-center pr-3`}>
                 <input
