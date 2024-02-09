@@ -12,6 +12,14 @@ export default {
   ],
   theme: {
     extend: {},
+    color: {
+        'green': 'green',
+        'red': 'red',
+        'blue': 'blue',
+        'black': 'black',
+        'white': 'white',
+        // '': '',
+    }
   },
   plugins: [],
 }

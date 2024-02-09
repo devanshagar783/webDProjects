@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
+import MaterialIconsReact, { colorPalette } from "material-icons-react";
+import React, { useEffect, useState } from "react";
+import bill from "../assets/bill.png";
 import TransactionModal from "../components/TransactionModal";
 import { expenseCategories } from "../constants/DropdownItems";
 import Summary from "./Summary";
-import MaterialIcon, { colorPalette } from "material-icons-react";
-import bill from "../assets/bill.png";
-import OutsideModalClick from "../components/OutsideModalClick";
 
 const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
@@ -13,27 +12,29 @@ const Transactions = () => {
     );
     const [tranData, setTranData] = useState(null);
 
+    useEffect(() => {
+        localStorage.setItem("transactions", JSON.stringify(transactionData));
+    }, [transactionData]);
+
     const addTransaction = () => {
         setShowModal(true);
+    };
+
+    const removeTransactionItem = (removeItem) => {
+        const t = transactionData.filter((item) => item.id !== removeItem.id);
+        setTransactionData(t);
     };
 
     const onClose = (transaction) => {
         if (transaction?.amount > 0) {
             if (transaction?.id > -1) {
                 let tempTransactions = [...transactionData];
-                tempTransactions[transaction.id - 1] = transaction;
+                const index = tempTransactions.findIndex(item => item.id === transaction.id);
+                tempTransactions[index] = transaction
                 setTransactionData(tempTransactions);
-                localStorage.setItem(
-                    "transactions",
-                    JSON.stringify([...tempTransactions])
-                );
             } else {
-                transaction.id = transactionData?.length + 1;
+                transaction.id = Date.now();
                 setTransactionData((prev) => [...prev, transaction]);
-                localStorage.setItem(
-                    "transactions",
-                    JSON.stringify([...transactionData, transaction])
-                );
             }
         }
         setShowModal(false);
@@ -62,9 +63,19 @@ const Transactions = () => {
                     {transactionData.map((transaction, index) => (
                         <div
                             key={index}
-                            className="flex w-full gap-2 items-center border-b "
+                            className="group flex w-full gap-2 items-center border-b"
                         >
-                            {transaction.categories && (
+                            <div className="absolute ml-[-30px] mt-[0px]">
+                                <span
+                                    className="material-icons text-[#9c3030] cursor-pointer pr-[30px] hidden group-hover:block"
+                                    onClick={() =>
+                                        removeTransactionItem(transaction)
+                                    }
+                                >
+                                    delete
+                                </span>
+                            </div>
+                            {transaction?.categories && (
                                 <img
                                     src={
                                         transaction.categories[0] > -1
@@ -95,7 +106,7 @@ const Transactions = () => {
                                     setShowModal(true);
                                 }}
                             >
-                                <MaterialIcon
+                                <MaterialIconsReact
                                     icon="edit"
                                     color={colorPalette.white}
                                 />

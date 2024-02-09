@@ -1,8 +1,8 @@
 import MaterialIconsReact from "material-icons-react";
 import React, { useEffect, useRef, useState } from "react";
+import { expenseCategories } from "../constants/DropdownItems";
 import DropdownList from "./DropdownList";
 import TextComponent from "./TextComponent";
-import { expenseCategories } from "../constants/DropdownItems";
 
 const Dropdown = ({
     title,

@@ -1,16 +1,11 @@
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import dayjs from "dayjs";
-import "dayjs/locale/en-in";
-import React, { forwardRef, useState } from "react";
-import Tabs from "./Tabs";
-import InputC from "./Input";
-import Dropdown from "./Dropdown";
-import { tabItems } from "../constants/TransactionTypes";
 import MaterialIconsReact from "material-icons-react";
+import React, { useState } from "react";
 import { expenseCategories } from "../constants/DropdownItems";
+import { tabItems } from "../constants/TransactionTypes";
+import Dropdown from "./Dropdown";
+import InputC from "./Input";
 import OutsideModalClick from "./OutsideModalClick";
+import Tabs from "./Tabs";
 
 const TransactionModal = (props) => {
     const { onClose, transaction, isOpen } = props;
@@ -55,6 +50,7 @@ const TransactionModal = (props) => {
                     <div className=" my-5 flex text-3xl overflow-hidden justify-center gap-2">
                         <p>₹</p>
                         <input
+                            type="number"
                             placeholder="00.00"
                             className="w-[150px] bg-transparent focus:outline-none"
                             value={amount}
@@ -63,21 +59,6 @@ const TransactionModal = (props) => {
                     </div>
                     {/* Date picker */}
                     <div>
-                        {/* <LocalizationProvider
-                            dateAdapter={AdapterDayjs}
-                            adapterLocale={"en-in"}
-                        >
-                            <DemoContainer
-                                components={["DatePicker"]}
-                                className=""
-                            >
-                                <DatePicker
-                                    label="Date"
-                                    value={dayjs(date)}
-                                    onChange={(e) => setDate(e)}
-                                />
-                            </DemoContainer>
-                        </LocalizationProvider> */}
                         <label
                             htmlFor="date"
                             className="absolute mt-[-10px] text-black text-sm ml-[8px] px-1 bg-[#BDBDBD]"
@@ -92,7 +73,7 @@ const TransactionModal = (props) => {
                             onChange={(e) => setDate(e.target.value)}
                         />
                     </div>
-                    {/* Transactino Type */}
+                    {/* Transaction Type */}
                     <div className="my-2 w-max">
                         <Tabs
                             data={tabItems}
